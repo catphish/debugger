@@ -6,6 +6,10 @@ processes:
     memory: standard
     quantity: 1
     name: web
+    public: true
+    start_monitor:
+      module: httpcheck
+      
 
 commands:
   -
