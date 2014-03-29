@@ -16,6 +16,29 @@ if ENV['FAILURE'] =~ /\Adie-after-(\d+)\z/
   end
 end
 
+if ENV['FAILURE'] == 'color-log'
+  puts "Welcome to the application (na)"
+  puts
+  puts "\e[1mWelcome to the application (bold)\e[0m"
+  puts "\e[2mWelcome to the application (faint)\e[0m"
+  puts "\e[3mWelcome to the application (italic)\e[0m"
+  puts "\e[4mWelcome to the application (underline)\e[0m"
+  puts "\e[9mWelcome to the application (crossed)\e[0m"
+
+
+
+
+  puts
+  
+  (1..7).to_a.each do |i|
+    puts "\e[3#{i}mWelcome to the application (3#{i})\e[0m"
+    puts "\e[4#{i}mWelcome to the application (4#{i})\e[0m"
+    puts "\e[3#{i};41mWelcome to the application (3#{i},41)\e[0m"
+    puts "\e[31;4#{i}mWelcome to the application (3#{i},4#{i})\e[0m"
+    puts
+  end
+end
+
 if ENV['FAILURE'] == 'constant-log'
   require 'lorem_ipsum_amet'
   Thread.new do
