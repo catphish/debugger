@@ -16,6 +16,16 @@ if ENV['FAILURE'] =~ /\Adie-after-(\d+)\z/
   end
 end
 
+if ENV['FAILURE'] == 'constant-log'
+  require 'lorem_ipsum_amet'
+  Thread.new do
+    loop do
+      sleep rand(10) + 3
+      puts "[#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}] " + LoremIpsum.random[0,rand(200)]
+    end
+  end
+end
+
 if ENV['FAILURE'] == "slow-start"
   puts "Loading web server... this will take 15 seconds..."
   sleep 15

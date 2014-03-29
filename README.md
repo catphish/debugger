@@ -11,3 +11,4 @@ The various options available are:
 * `request` - all requests will return a 500 error
 * `die-after-xx` - the server will die after xx seconds of running
 * `slow-start` - the web server will take 15 seconds to start
+* `constant-log` - runs normally and constantly sends data to STDOUT
