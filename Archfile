@@ -2,7 +2,7 @@ platform: ruby-2.0.0
 
 processes:
   -
-    command: rackup config.ru
+    command: rackup config.ru -p $PORT
     memory: standard
     quantity: 1
     name: web
