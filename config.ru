@@ -17,8 +17,6 @@ if ENV['FAILURE'] =~ /\Adie-after-(\d+)\z/
 end
 
 if ENV['FAILURE'] == 'color-log'
-  puts "Welcome to the application (na)"
-  puts
   puts "\e[1mWelcome to the application (bold)\e[0m"
   puts "\e[2mWelcome to the application (faint)\e[0m"
   puts "\e[3mWelcome to the application (italic)\e[0m"
@@ -28,6 +26,9 @@ if ENV['FAILURE'] == 'color-log'
     puts "\e[3#{i}mWelcome to the application (3#{i})\e[0m"
     puts "\e[4#{i}mWelcome to the application (4#{i})\e[0m"
   end
+  puts
+  puts
+  puts
 end
 
 if ENV['FAILURE'] == 'constant-log'
