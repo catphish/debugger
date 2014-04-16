@@ -24,17 +24,11 @@ if ENV['FAILURE'] == 'color-log'
   puts "\e[3mWelcome to the application (italic)\e[0m"
   puts "\e[4mWelcome to the application (underline)\e[0m"
   puts "\e[9mWelcome to the application (crossed)\e[0m"
-
-
-
-
   puts
-  
   (1..7).to_a.each do |i|
     puts "\e[3#{i}mWelcome to the application (3#{i})\e[0m"
     puts "\e[4#{i}mWelcome to the application (4#{i})\e[0m"
     puts "\e[3#{i};41mWelcome to the application (3#{i},41)\e[0m"
-    puts "\e[31;4#{i}mWelcome to the application (3#{i},4#{i})\e[0m"
     puts
   end
 end

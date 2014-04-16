@@ -12,3 +12,4 @@ The various options available are:
 * `die-after-xx` - the server will die after xx seconds of running
 * `slow-start` - the web server will take 15 seconds to start
 * `constant-log` - runs normally and constantly sends data to STDOUT
+* `color-log` - output some colurly ANSI text when the web server starts
