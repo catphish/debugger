@@ -1,9 +1,22 @@
+class Streamer
+  def each
+    5.times do |i|
+      yield "Hello #{i}\n"
+      sleep 0.5
+    end
+  end
+end
+
 class Server
   def self.call(env)
     if ENV['FAILURE'] == 'request'
       [500, {}, ["A 500 error..."]]
     else
-      [200, {}, ["Hello world! This is the test app."]]
+      if env['PATH_INFO'] =~ /\A\/stream\z/
+        [200, {}, Streamer.new]
+      else
+        [200, {}, ["Hello world! This is the test app."]]
+      end
     end
   end
 end

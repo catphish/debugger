@@ -2,6 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     lorem_ipsum_amet (0.6.2)
+    puma (2.9.1)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rake (10.1.1)
 
@@ -10,5 +12,6 @@ PLATFORMS
 
 DEPENDENCIES
   lorem_ipsum_amet
+  puma
   rack
   rake
