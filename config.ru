@@ -1,3 +1,6 @@
+puts "\e[33mWelcome to failer...\e[34m it's magical!\e[0m"
+puts "Starting with: #{ENV['FAILURE'] || 'No failure'}"
+
 class Streamer
   def each
     5.times do |i|
