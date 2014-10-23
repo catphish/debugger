@@ -1,5 +1,5 @@
-puts "\e[33mWelcome to failer...\e[34m it's magical!\e[0m"
-puts "Starting with: #{ENV['FAILURE'] || 'No failure'}"
+puts "\e[33mWelcome to vdt-debugger...\e[34m it's magical!\e[0m"
+puts "Starting with: #{ENV['MODE'] || 'No mode'}"
 
 class Streamer
   def each
@@ -12,7 +12,7 @@ end
 
 class Server
   def self.call(env)
-    if ENV['FAILURE'] == 'request'
+    if ENV['MODE'] == "fail-on-request"
       [500, {}, ["A 500 error..."]]
     else
       if env['PATH_INFO'] =~ /\A\/stream\z/
@@ -24,7 +24,7 @@ class Server
   end
 end
 
-if ENV['FAILURE'] =~ /\Adie-after-(\d+)\z/
+if ENV['MODE'] =~ /\Adie-after-(\d+)\z/
   secs = $1.to_i 
   Thread.new do 
     sleep secs
@@ -32,26 +32,27 @@ if ENV['FAILURE'] =~ /\Adie-after-(\d+)\z/
   end
 end
 
-if ENV['FAILURE'] == 'color-log'
-  puts "\e[1mWelcome to the application (bold)\e[0m"
-  puts " \e[2mWelcome to the application (faint)\e[0m"
-  puts "  \e[3mWelcome to the application (italic)\e[0m"
-  puts "   \e[4mWelcome to the application (underline)\e[0m"
-  puts "    \e[9mWelcome to the application (crossed)\e[0m"
-  (1..7).to_a.each do |i|
-    puts "   #{' ' * i}\e[3#{i}mWelcome to the application (3#{i})\e[0m"
-    puts "    #{' ' * i}\e[4#{i}mWelcome to the application (4#{i})\e[0m"
-  end
-  puts
-  puts
-  puts
+#
+# Print some stuff in colors when we start
+#
+puts "\e[1mWelcome to the application (bold)\e[0m"
+puts " \e[2mWelcome to the application (faint)\e[0m"
+puts "  \e[3mWelcome to the application (italic)\e[0m"
+puts "   \e[4mWelcome to the application (underline)\e[0m"
+puts "    \e[9mWelcome to the application (crossed)\e[0m"
+(1..7).to_a.each do |i|
+  puts "   #{' ' * i}\e[3#{i}mWelcome to the application (3#{i})\e[0m"
+  puts "    #{' ' * i}\e[4#{i}mWelcome to the application (4#{i})\e[0m"
 end
 
-if ENV['FAILURE'] == 'constant-log' || ENV['FAILURE'] == 'fast-log' || ENV['FAILURE'] == 'very-fast-log'
+#
+# Logging
+#
+if ENV['MODE'] == 'constant-log' || ENV['MODE'] == 'fast-log' || ENV['MODE'] == 'very-fast-log'
   require 'lorem_ipsum_amet'
   Thread.new do
     loop do
-      case ENV['FAILURE']
+      case ENV['MODE']
       when 'fast-log'
         sleep(rand(2) + 1)
       when 'very-fast-log'
@@ -64,12 +65,18 @@ if ENV['FAILURE'] == 'constant-log' || ENV['FAILURE'] == 'fast-log' || ENV['FAIL
   end
 end
 
-if ENV['FAILURE'] == "slow-start"
+#
+# Slow start
+#
+if ENV['MODE'] == "slow-start"
   puts "Loading web server... this will take 15 seconds..."
   sleep 15
 end
 
-if ENV['FAILURE'] == 'run'
+#
+# Fail on run
+#
+if ENV['MODE'] == "fail-on-run"
   puts "Process failed to start, but here's something to make it better:"
   puts
   puts "Humpty Dumpty sat on a wall,"

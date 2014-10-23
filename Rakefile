@@ -1,11 +1,11 @@
 task :build do
-  puts "\e[33mWelcome to failer...\e[34m it's magical!\e[0m"
-  puts "Starting with: #{ENV['FAILURE'] || 'No failure'}"
+  puts "\e[33mWelcome to vdt-debugger...\e[34m it's magical!\e[0m"
+  puts "Starting with: #{ENV['MODE'] || 'No mode'}"
   
-  if ENV['FAILURE'] == 'build'
-    puts "Build did not complete successfully."
+  if ENV['MODE'] == 'build'
+    puts "\e[31mBuild did not complete successfully.\e[0m"
     Process.exit 1
   else
-    puts "Faux build completed successfully."
+    puts "\e[32mFaux build completed successfully.\e[0m"
   end
 end

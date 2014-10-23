@@ -23,6 +23,6 @@ commands:
 
 environment_variables:
   -
-    key: FAILURE
-    value: build
+    key: MODE
+    value: none
 
