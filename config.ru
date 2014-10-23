@@ -51,7 +51,7 @@ if ENV['FAILURE'] == 'constant-log' || ENV['FAILURE'] == 'fast-log'
   require 'lorem_ipsum_amet'
   Thread.new do
     loop do
-      ENV['FAILURE'] == 'fast-log' ? skeep(rand(2) + 1) : sleep(rand(10) + 3)
+      ENV['FAILURE'] == 'fast-log' ? sleep(rand(2) + 1) : sleep(rand(10) + 3)
       puts "[#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}] " + LoremIpsum.random[0,rand(200)]
     end
   end
