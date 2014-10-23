@@ -47,7 +47,7 @@ if ENV['FAILURE'] == 'color-log'
   puts
 end
 
-if ENV['FAILURE'] == 'constant-log' || ENV['FAILURE'] == 'fast-log'
+if ENV['FAILURE'] == 'constant-log' || ENV['FAILURE'] == 'fast-log' || ENV['FAILURE'] == 'very-fast-log'
   require 'lorem_ipsum_amet'
   Thread.new do
     loop do
