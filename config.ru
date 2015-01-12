@@ -15,8 +15,11 @@ class Server
     if ENV['MODE'] == "fail-on-request"
       [500, {}, ["A 500 error..."]]
     else
-      if env['PATH_INFO'] =~ /\A\/stream\z/
+      case env['PATH_INFO']
+      when /\A\/stream\z/
         [200, {}, Streamer.new]
+      when /\A\/request-id\z/
+        [200, {}, ["The request ID is: #{env['HTTP_X_REQUEST_ID'] || 'not provided'}"]]
       else
         [200, {}, ["Hello world! This is the test app."]]
       end
@@ -25,8 +28,8 @@ class Server
 end
 
 if ENV['MODE'] =~ /\Adie-after-(\d+)\z/
-  secs = $1.to_i 
-  Thread.new do 
+  secs = $1.to_i
+  Thread.new do
     sleep secs
     Process.exit 1
   end
