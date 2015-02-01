@@ -1,4 +1,4 @@
-platform: ruby-2.1.0
+platform: ruby-2.1
 
 processes:
   -
@@ -9,14 +9,14 @@ processes:
     public: true
     start_monitor:
       module: httpcheck
-      
+
 
 commands:
   -
     command: bundle install
     success_exit_code: 0
     event: build
-  - 
+  -
     command: bundle exec rake build
     success_exit_code: 0
     event: build
