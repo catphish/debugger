@@ -20,9 +20,10 @@ class Server
         [200, {}, Streamer.new]
       when /\A\/request-id\z/
         [200, {}, ["The request ID is: #{env['HTTP_X_REQUEST_ID'] || 'not provided'}"]]
-      when /\A\/sendfile\/(\w+\.\w+)\z/
+      when /\A\/sendfile\/([\w\/]+)\/(\w+\.jpg)\z/
         [200, {
-          'X-Viaduct-Send-File' => "/app/data/sendfile-test/#{$1}"
+          'X-Viaduct-Send-File' => "/app/#{$1}/#{$2}",
+          'Content-Type' => 'image/jpeg'
         }, ['Nothing to see here...']]
       else
         [200, {}, ["Hello world! This is the test app."]]
