@@ -17,3 +17,11 @@ The various options available are:
 
 You can also request streamed data by requesting `/stream` in a client
 which supports streaming data (i.e. curl).
+
+## HTTP methods
+
+* `/` - just returns some text
+* `/stream` - streams some data
+* `/request-id` - returns the current X-Request-ID
+* `/sendfile/images/pic1.jpg` - should return an image from the images folder
+  using the X-Viaduct-Send-File header.
