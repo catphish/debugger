@@ -20,6 +20,10 @@ class Server
         [200, {}, Streamer.new]
       when /\A\/request-id\z/
         [200, {}, ["The request ID is: #{env['HTTP_X_REQUEST_ID'] || 'not provided'}"]]
+      when /\A\/sendfile\/(\w+\.\w+)\z/
+        [200, {
+          'X-Viaduct-Send-File' => "/app/data/sendfile-test/#{$1}"
+        }, ['Nothing to see here...']]
       else
         [200, {}, ["Hello world! This is the test app."]]
       end
