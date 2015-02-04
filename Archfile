@@ -9,6 +9,14 @@ processes:
     public: true
     start_monitor:
       module: httpcheck
+  -
+    command: rackup other.ru -p $PORT
+    memory: standard
+    quantity: 1
+    name: othervd
+    public: false
+    start_monitor:
+      module: httpcheck
 
 
 commands:
