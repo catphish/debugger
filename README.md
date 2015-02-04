@@ -25,3 +25,11 @@ which supports streaming data (i.e. curl).
 * `/request-id` - returns the current X-Request-ID
 * `/sendfile/images/pic1.jpg` - should return an image from the images folder
   using the X-Viaduct-Send-File header.
+
+## Another Web Server
+
+There is another web server waiting to do stuff! Just start it up
+
+```
+rackup other.ru
+```
