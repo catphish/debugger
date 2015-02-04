@@ -1,11 +1,21 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    kgio (2.9.2)
     lorem_ipsum_amet (0.6.2)
     puma (2.9.1)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
+    rainbows (4.6.2)
+      kgio (~> 2.5)
+      rack (~> 1.1)
+      unicorn (~> 4.8)
+    raindrops (0.13.0)
     rake (10.1.1)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
 
 PLATFORMS
   ruby
@@ -14,4 +24,6 @@ DEPENDENCIES
   lorem_ipsum_amet
   puma
   rack
+  rainbows
   rake
+  unicorn
