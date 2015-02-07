@@ -1,4 +1,4 @@
-platform: ruby-2.1
+platform: ruby-2.1.5
 
 processes:
   -
@@ -13,8 +13,9 @@ processes:
     command: rackup other.ru -p $PORT
     memory: standard
     quantity: 1
-    name: othervd
-    public: false
+    name: other
+    public: true
+    public_mount_path: other
     start_monitor:
       module: httpcheck
 
