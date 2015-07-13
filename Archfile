@@ -35,3 +35,7 @@ environment_variables:
     key: MODE
     value: none
 
+console_aliases:
+  - 
+    key: console
+    value: irb -I./lib
