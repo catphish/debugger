@@ -38,4 +38,4 @@ environment_variables:
 console_aliases:
   - 
     key: console
-    value: irb -I./lib
+    command: "irb -I./lib"
