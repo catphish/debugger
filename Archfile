@@ -1,4 +1,4 @@
-platform: ruby-2.2.2
+platform: ruby-2.1.1
 
 processes:
   -
